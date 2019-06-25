@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        tools:background="@color/colorPrimary" />
+    <!--<RelativeLayout
+        android:layout_gravity="center"
+        android:id="@+id/imageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="28dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:alpha="0.7"
+        android:background="@drawable/scrim" />
+    <ProgressBar
+        android:id="@+id/organization_progress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="@dimen/activity_margin"
+        android:layout_height="@dimen/activity_margin"
+        android:theme="@style/CircularProgress"
+        android:layout_gravity="center" />
+</FrameLayout>

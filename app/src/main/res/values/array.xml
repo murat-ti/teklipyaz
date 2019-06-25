@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Language">
+        <item>@string/pref_lang_tm</item>
+        <item>@string/pref_lang_ru</item>
+        <item>@string/pref_lang_en</item>
+    </string-array>
+
+    <string-array name="languageAlias">
+        <item>tm</item>
+        <item>ru</item>
+        <item>en</item>
+    </string-array>
+
+</resources>
