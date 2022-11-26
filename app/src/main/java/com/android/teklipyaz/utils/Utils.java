@@ -1,34 +1,24 @@
 package com.android.teklipyaz.utils;
 
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.Cursor;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.graphics.drawable.DrawableCompat;
 
 import com.android.teklipyaz.R;
 
-import com.android.teklipyaz.views.fragments.CityFragment;
-import com.android.teklipyaz.views.fragments.MoreFragment;
-import com.android.teklipyaz.views.fragments.OrganizationOverviewFragment;
-import com.android.teklipyaz.views.fragments.EventListFragment;
-import com.android.teklipyaz.views.fragments.ProfileFragment;
-import com.android.teklipyaz.views.fragments.TextFragment;
 /*
 import com.android.teklipyaz.view.fragment.SettingsFragment;*/
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Utils {
@@ -37,21 +27,14 @@ public class Utils {
 
     public static final String ATTRIBUTE_SCHEMA = "http://schemas.android.com/apk/lib/com.android.teklipyaz.util";
     
-    public static final String HOME_FRAGMENT_TAG = "CityFragment";
-    public final static String EVENT_LIST_FRAGMENT_TAG = "EventListFragment";
-    public static final String EVENT_OVERVIEW_FRAGMENT_TAG = "EventOverView";
-    public final static String ORGANIZATION_LIST_FRAGMENT_TAG = "OrganizationOverviewFragment";
-    public static final String ORGANIZATION_OVERVIEW_FRAGMENT_TAG = "OrganizationOverView";
-    public static final String SEARCH_FRAGMENT_TAG = "SearchFragment";
+    public static final String HOME_FRAGMENT_TAG = "SettingsFragment";
     public static final String SETTINGS_FRAGMENT_TAG = "SettingsFragment";
-    public static final String PROFILE_FRAGMENT_TAG = "ProfileFragment";
-    public static final String CONTACT_US_FRAGMENT = "ContactUs";
-    public static final String TEXT_FRAGMENT_TAG = "TextFragment";
+    public static final String TEXT_FRAGMENT_TAG = "AboutFragment";
     public static final String MORE_FRAGMENT_TAG = "MoreFragment";
     private static String CURRENT_TAG = null;
     private static Map<String, Typeface> TYPEFACE = new HashMap<String, Typeface>();
 
-    public static int getToolbarHeight(Context context) {
+    /*public static int getToolbarHeight(Context context) {
         int height = (int) context.getResources().getDimension(
                 R.dimen.abc_action_bar_default_height_material);
         return height;
@@ -81,7 +64,7 @@ public class Utils {
         String result = cursor.getString(column_index);
         cursor.close();
         return result;
-    }
+    }*/
 
     /**
      * Convert milliseconds into time hh:mm:ss
@@ -89,7 +72,7 @@ public class Utils {
      * @param milliseconds
      * @return time in String
      */
-    public static String getDuration(long milliseconds) {
+    /*public static String getDuration(long milliseconds) {
         long sec = (milliseconds / 1000) % 60;
         long min = (milliseconds / (60 * 1000)) % 60;
         long hour = milliseconds / (60 * 60 * 1000);
@@ -110,7 +93,7 @@ public class Utils {
     public static int dpToPx(Context context, int dp) {
         float density = context.getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
-    }
+    }*/
 
     public static void switchFragmentWithAnimation(int id, Fragment fragment,
                                                    FragmentActivity activity, String TAG, AnimationType transitionStyle) {
@@ -180,7 +163,7 @@ public class Utils {
         fragmentTransaction.commit();
     }
 
-    public static void switchContent(int id, String TAG,
+    /*public static void switchContent(int id, String TAG,
                                      FragmentActivity baseActivity, AnimationType transitionStyle) {
 
         Fragment fragmentToReplace = null;
@@ -238,22 +221,8 @@ public class Utils {
             // one
             if (fragment == null) {
 
-                if (TAG.equals(HOME_FRAGMENT_TAG)) {
-                    fragmentToReplace = new CityFragment();
-                } else if (TAG.equals(ORGANIZATION_LIST_FRAGMENT_TAG)) {
-                    fragmentToReplace = new OrganizationOverviewFragment();
-                } else if (TAG.equals(EVENT_LIST_FRAGMENT_TAG)) {
-                    fragmentToReplace = new EventListFragment();
-                } /*else if (TAG.equals(ORGANIZATION_OVERVIEW_FRAGMENT_TAG)) {
-                    fragmentToReplace = new OrganizationOverviewFragment();
-                } else if (TAG.equals(EVENT_OVERVIEW_FRAGMENT_TAG)) {
-                    fragmentToReplace = new EventOverviewFragment();
-                } else if (TAG.equals(CONTACT_US_FRAGMENT)) {
-                    fragmentToReplace = new ContactUsFragment();
-                } */
-                else if (TAG.equals(TEXT_FRAGMENT_TAG)) {
-                    fragmentToReplace = new TextFragment();
-                }
+                if (TAG.equals(SETTINGS_FRAGMENT_TAG)) {
+                    fragmentToReplace = new SETTINGS_FRAGMENT_TAG();
                 else if (TAG.equals(MORE_FRAGMENT_TAG)) {
                     fragmentToReplace = new MoreFragment();
                 }
@@ -262,23 +231,10 @@ public class Utils {
             else
             {
                 if (TAG.equals(HOME_FRAGMENT_TAG)) {
-                    fragmentToReplace = (CityFragment) fragment;
-                } else if (TAG.equals(ORGANIZATION_LIST_FRAGMENT_TAG)) {
-                    fragmentToReplace = (OrganizationOverviewFragment) fragment;
-                } else if (TAG.equals(EVENT_LIST_FRAGMENT_TAG)) {
-                    fragmentToReplace = (EventListFragment) fragment;
-                }else if (TAG.equals(PROFILE_FRAGMENT_TAG)) {
-                    fragmentToReplace = (ProfileFragment) fragment;
-                } /*else if (TAG.equals(SETTINGS_FRAGMENT_TAG)) {
                     fragmentToReplace = (SettingsFragment) fragment;
-                } else if (TAG.equals(CONTACT_US_FRAGMENT)) {
-                    fragmentToReplace = (ContactUsFragment) fragment;
-                }*/
-                else if (TAG.equals(TEXT_FRAGMENT_TAG)) {
-                    fragmentToReplace = (TextFragment) fragment;
                 }
-                else if (TAG.equals(MORE_FRAGMENT_TAG)) {
-                    fragmentToReplace = (MoreFragment) fragment;
+                else if (TAG.equals(TEXT_FRAGMENT_TAG)) {
+                    fragmentToReplace = (AboutFragment) fragment;
                 }
             }
 
@@ -293,7 +249,7 @@ public class Utils {
         {
             // Do nothing since we are already on the fragment being changed to
         }
-    }
+    }*/
 
     /*public static void vibrate(Context context) {
         // Get instance of Vibrator from current Context and Vibrate for 400
@@ -304,12 +260,12 @@ public class Utils {
 
     public static String getVersion(Context context) {
         try {
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(), PackageManager.GET_META_DATA);
-            return String.valueOf(pInfo.versionCode) + "." + pInfo.versionName;
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            String version = (pInfo.versionCode) + "." + pInfo.versionName;
+            return version;
 
         } catch (NameNotFoundException e) {
-            return "1.1.0";
+            return "1.0.0";
         }
     }
 
@@ -322,6 +278,20 @@ public class Utils {
         }
         return typeface;
     }
+
+    public static double getDouble(String sValue) {
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.US);
+
+        Number parse = null;
+        try {
+            parse = numberFormat.parse(sValue);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return parse == null ? 0 : parse.doubleValue();
+    }
+
 
     public enum AnimationType {
         SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN, FADE_IN, SLIDE_IN_SLIDE_OUT, FADE_OUT

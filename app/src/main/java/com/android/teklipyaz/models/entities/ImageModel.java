@@ -39,4 +39,8 @@ public class ImageModel {
         this.isMain = isMain;
     }
 
+    public String check(){
+        return this.getItemId()+" : "+this.getFilepath()+" : "+this.getIsMain();
+    }
+
 }

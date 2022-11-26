@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Teklipyaz</string>
+    <string name="app_description">Kähanalar hakda giňişleýin maglumat we teklipler</string>
+    <string name="action_settings">Sazlamalar</string>
+    <string name="action_information">Maglumat</string>
+    <string name="app_about_application">Taslama hakda</string>
+    <string name="app_email">info@teklipyaz.com</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_lang">Dil</string>
+    <string name="pref_lang_tk">Türkmençe</string>
+    <string name="pref_lang_ru">Русский</string>
+    <string name="pref_lang_en">English</string>
+    <string name="cancel">Goýbolsun et</string>
+    <string name="pref_email">Email</string>
+    <string name="pref_version">Wersiýa</string>
+    <string name="title_activity_maps">Karta</string>
+    <string name="title_no_data">Maglumat tapylmady</string>
+
+    <string name="btn_retry">Gaýtadan</string>
+    <string name="error_msg_no_internet">Internede baglanmakda mesele bar</string>
+    <string name="error_msg_timeout">Serwer köp wagtlap jogap bermedi</string>
+    <string name="error_msg_unknown">Näbelli mesele ýüze çykdy</string>
+    <string name="tap_to_reload">Täzelemek üçin bas</string>
+    <string name="show_more">Giňişleýin</string>
+    <string name="show_less">Gysga</string>
+    <string name="city">Şäher</string>
+    <string name="minimum_input_number_string">Gözleg üçin iň azyndan 3 simwol girizmeli</string>
+    <string name="double_click_to_exit">Please click BACK again to exit</string>
+    <string name="action_common_settings">Umumy</string>
+    <string name="category">Kategoriýa</string>
+    <string name="search">Gözleg</string>
+    <string name="favourite">Saýlanan</string>
+    <string name="loading">Ýüklenýär</string>
+    <string name="places">Ýerler</string>
+    <string name="blog">Blog</string>
+    <string name="events">Wakalar</string>
+    <string name="catalog">Katalog</string>
+    <string name="home">Baş sahypa</string>
+</resources>

@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.databasefirst.base.remote.RemoteConfiguration;
 
 public class ImageHelper {
     private Context context;
@@ -25,7 +26,7 @@ public class ImageHelper {
     public void show(String filePath){
         Glide
                 .with(context)
-                .load(ApiUtil.BASE_IMAGE_URL + filePath)
+                .load(RemoteConfiguration.BASE_IMAGE_URL + filePath)
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {

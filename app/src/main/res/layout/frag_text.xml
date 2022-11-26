@@ -14,26 +14,6 @@
         android:background="@color/colorWhite"
         android:fitsSystemWindows="true">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentTop="true"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Apriori Algo Result"
-            app:titleTextColor="#FFF" />
-
-        <!--<FrameLayout
-            android:id="@+id/content_all_feedbacks"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:layout_gravity="center"
-            android:background="#FFF"
-            android:fitsSystemWindows="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="view.activities.AllFeedbacksActivity">-->
         <WebView
             android:id="@+id/WebViewHtml"
             android:layout_width="match_parent"
@@ -44,14 +24,6 @@
             android:fitsSystemWindows="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-            <com.wang.avi.AVLoadingIndicatorView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                app:indicator="LineScaleParty"
-                app:indicator_color="@color/colorPrimary" />
         </WebView>
         <!--</FrameLayout>-->
 

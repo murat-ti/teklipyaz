@@ -5,6 +5,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.teklipyaz.R;
+
 public class ErrorView {
     private LinearLayout errorLayout;
     private ProgressBar progressBar;
@@ -22,7 +24,6 @@ public class ErrorView {
         }
     }
 
-    // Helpers -------------------------------------------------------------------------------------
     public void hide() {
         if (errorLayout.getVisibility() == View.VISIBLE) {
             errorLayout.setVisibility(View.GONE);

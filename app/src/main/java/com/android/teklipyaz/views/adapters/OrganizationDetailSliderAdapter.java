@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.android.teklipyaz.R;
 import com.android.teklipyaz.utils.ImageHelper;
+import com.databasefirst.base.remote.RemoteConfiguration;
 
 public class OrganizationDetailSliderAdapter extends PagerAdapter{
     Context context;
@@ -50,7 +51,7 @@ public class OrganizationDetailSliderAdapter extends PagerAdapter{
 
         ImageView imageView = (ImageView) itemView.findViewById(R.id.image);
         //imageView.setImageURI().setImageResource(images[position]);
-        //Glide.with(context).load(ApiUtil.BASE_IMAGE_URL + images[position]).into(imageView);
+        //Glide.with(context).load(RemoteConfiguration.BASE_IMAGE_URL + images[position]).into(imageView);
         ImageHelper imageUtil = new ImageHelper(context,imageView, mProgressBar);
         imageUtil.show(images[position]);
 
@@ -60,7 +61,7 @@ public class OrganizationDetailSliderAdapter extends PagerAdapter{
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "you clicked image " + (position + 1), Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, "you clicked image " + (position + 1), Toast.LENGTH_LONG).show();
             }
         });
 

@@ -2,19 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="25dp"
+    android:layout_marginTop="20dp"
     android:orientation="horizontal">
 
         <TextView
             android:id="@android:id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/preferenceTextSize"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@android:id/summary"
             android:gravity="right"
-            android:textSize="@dimen/preferenceSummaryTextSize"
+            android:textSize="@dimen/preferenceTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 </LinearLayout>

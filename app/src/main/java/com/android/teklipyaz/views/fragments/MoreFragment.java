@@ -9,22 +9,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
-import android.support.v7.preference.PreferenceScreen;
-import android.widget.Toast;
 
 import com.android.teklipyaz.R;
 import com.android.teklipyaz.utils.Utils;
-import com.android.teklipyaz.utils.VersionChecker;
-import com.android.teklipyaz.views.activities.APrioriResultActivity;
-import com.android.teklipyaz.views.activities.MainActivity;
 
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
 public class MoreFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
     public static final String PREF_LANGUAGE = "language_preference";
@@ -67,9 +60,9 @@ public class MoreFragment extends PreferenceFragmentCompat implements SharedPref
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Utils.switchFragmentWithAnimation(R.id.frag_container,
-                        new TextFragment(), ((MainActivity) (getContext())), Utils.PROFILE_FRAGMENT_TAG,
-                        Utils.AnimationType.SLIDE_LEFT);
+                /*Utils.switchFragmentWithAnimation(R.id.frag_container,
+                        new AboutFragment(), ((PlaceActivity) (getContext())), Utils.PROFILE_FRAGMENT_TAG,
+                        Utils.AnimationType.SLIDE_LEFT);*/
                 return false;
             }
         });

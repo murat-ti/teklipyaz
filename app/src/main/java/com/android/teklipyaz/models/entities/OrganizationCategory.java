@@ -6,10 +6,14 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.android.teklipyaz.models.repositories.local.DBConstant;
+import com.android.teklipyaz.utils.LocaleHelper;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "organization_category_table")
+import java.io.Serializable;
+
+@Entity(tableName = DBConstant.ORGANIZATION_CATEGOTY_TABLE)
 public class OrganizationCategory {
 
     @PrimaryKey/*(autoGenerate = true)*/
@@ -155,6 +159,7 @@ public class OrganizationCategory {
     }
 
     public String getTitle(String lang) {
+        lang = LocaleHelper.rightLocale(lang);
         switch (lang){
             case "tm": title = titleTm; break;
             case "ru": title = titleRu; break;
@@ -165,5 +170,9 @@ public class OrganizationCategory {
 
     public void setTitle(String title) {
         this.titleTm = title;
+    }
+
+    public String toString(){
+        return "Category : " + title + "\n";
     }
 }

@@ -1,11 +1,10 @@
 package com.android.teklipyaz.models.repositories.local;
 
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import com.android.teklipyaz.models.dao.OrganizationCategoryDao;
 import com.android.teklipyaz.models.entities.OrganizationCategory;
 import java.util.List;
-import java.util.concurrent.Callable;
-
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
 public class OrganizationCategoriesLocalRepoImpl implements OrganizationCategoriesLocalRepo {
@@ -17,17 +16,19 @@ public class OrganizationCategoriesLocalRepoImpl implements OrganizationCategori
     }
 
     @Override
-    public Observable<List<OrganizationCategory>> getAllOrganizationCategories() {
-        return Observable.fromCallable(new Callable<List<OrganizationCategory>>() {
-            @Override
-            public List<OrganizationCategory> call() throws Exception {
-                return itemsDao.getAll();
-            }
-        });
+    public Observable<List<OrganizationCategory>> getAllLocal() {
+        return Observable.fromCallable(() -> itemsDao.getAll());
     }
 
     @Override
-    public void addOrganizationCategories(List<OrganizationCategory> items) {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    public void add(List<OrganizationCategory> items) {
         itemsDao.insertAll(items);
     }
+
+    /*@Query("UPDATE events_new SET name = :name WHERE id IS :id")
+    void updateName(String name, int id);*/
+
+    @Override
+    public void removeAll() { itemsDao.removeAll(); }
 }

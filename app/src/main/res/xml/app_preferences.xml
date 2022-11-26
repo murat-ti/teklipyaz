@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v7.preference.PreferenceCategory
-        android:title="@string/action_settings"
+        android:key="header_common_preference"
+        android:title="@string/action_common_settings"
         android:layout="@layout/preferences_category_header">
+        <ListPreference
+            android:key="city_preference"
+            android:title="@string/city"
+            android:summary=""
+            android:negativeButtonText="@string/cancel"
+            android:layout="@layout/preferences_header"/>
+
         <ListPreference
             android:key="language_preference"
             android:title="@string/pref_lang"
-            android:summary="Russian"
+            android:summary=""
             android:entries="@array/Language"
             android:entryValues="@array/languageAlias"
             android:negativeButtonText="@string/cancel"
@@ -17,19 +26,20 @@
     </android.support.v7.preference.PreferenceCategory>
 
     <android.support.v7.preference.PreferenceCategory
+        android:key="header_info_preference"
         android:title="@string/action_information"
         android:layout="@layout/preferences_category_header">
         <Preference
             android:key="email_preference"
             android:title="@string/pref_email"
+            android:autoLink="email"
             android:summary="@string/app_email"
-            android:selectable="false"
             android:layout="@layout/preferences_header"/>
 
         <Preference
             android:key="version_preference"
             android:title="@string/pref_version"
-            android:summary="1.1.0"
+            android:summary=""
             android:persistent="false"
             android:selectable="false"
             android:layout="@layout/preferences_header"/>
@@ -40,8 +50,6 @@
             android:summary=""
             android:persistent="false"
             android:layout="@layout/preferences_header"/>
-            <!--<intent android:action="com.android.teklipyaz.views.activities.APrioriResultActivity"/>
-        </Preference>-->
     </android.support.v7.preference.PreferenceCategory>
     <!--<android.support.v7.preference.SwitchPreferenceCompat
             android:icon="@drawable/ic_menu_camera"

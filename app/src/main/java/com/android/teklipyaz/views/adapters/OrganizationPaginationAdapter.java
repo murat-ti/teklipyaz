@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,9 @@ import android.widget.TextView;
 
 import com.android.teklipyaz.R;
 import com.android.teklipyaz.models.entities.ImageModel;
-import com.android.teklipyaz.models.entities.OrganizationModel;
+import com.android.teklipyaz.models.entities.Organization;
 import com.android.teklipyaz.utils.ImageHelper;
+import com.android.teklipyaz.utils.ListUtil;
 import com.android.teklipyaz.utils.PaginationAdapterCallback;
 import com.android.teklipyaz.utils.OnItemClickListener;
 
@@ -29,14 +29,14 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
     private static final int ITEM = 0;
     private static final int LOADING = 1;
 
-    private List<OrganizationModel> organizationResults;
+    private List<Organization> organizationResults;
     private Context context;
 
     private boolean isLoadingAdded = false;
     private boolean retryPageLoad = false;
     private PaginationAdapterCallback mCallback;
     private OnItemClickListener clickListener;
-
+    private ListUtil listUtil;
     private String errorMsg;
 
 
@@ -44,8 +44,7 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
         this.context = context;
         this.mCallback = (PaginationAdapterCallback) context;
         organizationResults = new ArrayList<>();
-
-
+        listUtil = new ListUtil(context);
     }
 
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
@@ -73,8 +72,7 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
     @NonNull
     private RecyclerView.ViewHolder getViewHolder(ViewGroup parent, LayoutInflater inflater) {
         RecyclerView.ViewHolder viewHolder;
-        //View v1 = inflater.inflate(R.layout.item_organization_list, parent, false);
-        View v1 = inflater.inflate(R.layout.item_organization, parent, false);
+        View v1 = inflater.inflate(R.layout.item_place, parent, false);
         viewHolder = new OrganizationVH(v1);
         return viewHolder;
     }
@@ -82,14 +80,14 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        OrganizationModel result = organizationResults.get(position); // Organization
+        Organization result = organizationResults.get(position); // Organization
 
         switch (getItemViewType(position)) {
             case ITEM:
                 final OrganizationVH organizationVH = (OrganizationVH) holder;
 
                 organizationVH.mTitle.setText(result.getTitle());
-                organizationVH.mCityCategory.setText(result.getCityId() + " | " + result.getCategoryId());
+                organizationVH.mCityCategory.setText(result.getCityId() + " | " + listUtil.getOrganizationCategoryItem(result.getCategoryId()));
                 if(result.getAddress() != null && result.getAddress().isEmpty())
                 {
                     organizationVH.mAddress.setVisibility(View.GONE);
@@ -107,46 +105,8 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
                 }
 
                 List<ImageModel> images = result.getImages();
-                /*if(images != null && images.size() > 0) {
-                    Log.d("My image", "List item: " + images.get(0).getFilepath());
-                    for(int i=0;i<images.size();i++)
-                    {
-                        Log.d("My image", "List item: " + images.get(i).getFilepath());
-                    }
-
-                }
-                else
-                    Log.d("My image is ","null");*/
-                /**
-                 * Using Glide to handle image loading.
-                 * Learn more about Glide here:
-                 * <a href="http://blog.grafixartist.com/image-gallery-app-android-studio-1-4-glide/" />
-                 */
                 ImageHelper imageUtil = new ImageHelper(context,organizationVH.mImg, organizationVH.mProgress);
                 imageUtil.show(images.get(0).getFilepath());
-                /*Glide
-                        .with(context)
-                        .load(ApiUtil.BASE_IMAGE_URL + images.get(0).getFilepath())
-                        .listener(new RequestListener<String, GlideDrawable>() {
-                            @Override
-                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                                // TODO: 08/11/16 handle failure
-                                organizationVH.mProgress.setVisibility(View.GONE);
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                // image ready, hide progress now
-                                organizationVH.mProgress.setVisibility(View.GONE);
-                                return false;   // return false if you want Glide to handle everything else.
-                            }
-                        })
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)   // cache both original & resized image
-                        .centerCrop()
-                        .crossFade()
-                        .into(organizationVH.mImg);*/
-
                 break;
 
             case LOADING:
@@ -185,18 +145,18 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
    _________________________________________________________________________________________________
     */
 
-    public void add(OrganizationModel r) {
+    public void add(Organization r) {
         organizationResults.add(r);
         notifyItemInserted(organizationResults.size() - 1);
     }
 
-    public void addAll(List<OrganizationModel> moveResults) {
-        for (OrganizationModel result : moveResults) {
+    public void addAll(List<Organization> moveResults) {
+        for (Organization result : moveResults) {
             add(result);
         }
     }
 
-    public void remove(OrganizationModel r) {
+    public void remove(Organization r) {
         int position = organizationResults.indexOf(r);
         if (position > -1) {
             organizationResults.remove(position);
@@ -218,14 +178,14 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
 
     public void addLoadingFooter() {
         isLoadingAdded = true;
-        add(new OrganizationModel());
+        add(new Organization());
     }
 
     public void removeLoadingFooter() {
         isLoadingAdded = false;
 
         int position = organizationResults.size() - 1;
-        OrganizationModel result = getItem(position);
+        Organization result = getItem(position);
 
         if (result != null) {
             organizationResults.remove(position);
@@ -233,7 +193,7 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
         }
     }
 
-    public OrganizationModel getItem(int position) {
+    public Organization getItem(int position) {
         return organizationResults.get(position);
     }
 
@@ -248,6 +208,7 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
         notifyItemChanged(organizationResults.size() - 1);
 
         if (errorMsg != null) this.errorMsg = errorMsg;
+
     }
 
    /*
@@ -297,7 +258,6 @@ public class OrganizationPaginationAdapter extends RecyclerView.Adapter<Recycler
             mRetryBtn = (ImageButton) itemView.findViewById(R.id.loadmore_retry);
             mErrorTxt = (TextView) itemView.findViewById(R.id.loadmore_errortxt);
             mErrorLayout = (LinearLayout) itemView.findViewById(R.id.loadmore_errorlayout);
-
             mRetryBtn.setOnClickListener(this);
             mErrorLayout.setOnClickListener(this);
         }

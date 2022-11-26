@@ -6,9 +6,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import com.android.teklipyaz.models.entities.OrganizationCategory;
 import com.android.teklipyaz.models.repositories.local.DBConstant;
-
 import java.util.List;
-import io.reactivex.Flowable;
 
 @Dao
 public interface OrganizationCategoryDao {
@@ -26,4 +24,7 @@ public interface OrganizationCategoryDao {
 
     @Query("SELECT * FROM "+ DBConstant.ORGANIZATION_CATEGOTY_TABLE)
     List<OrganizationCategory> getAll();
+
+    @Query("DELETE FROM "+ DBConstant.ORGANIZATION_CATEGOTY_TABLE)
+    void removeAll();
 }

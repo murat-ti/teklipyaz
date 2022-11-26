@@ -28,11 +28,12 @@ public class Network {
      */
     public String fetchErrorMessage(Throwable throwable) {
         String errorMsg = context.getResources().getString(R.string.error_msg_unknown);
-
-        if (!isNetworkConnected()) {//!isNetworkConnected()
-            errorMsg = context.getResources().getString(R.string.error_msg_no_internet);
-        } else if (throwable instanceof TimeoutException) {
-            errorMsg = context.getResources().getString(R.string.error_msg_timeout);
+        if( throwable != null) {
+            if (!isNetworkConnected()) {
+                errorMsg = context.getResources().getString(R.string.error_msg_no_internet);
+            } else if (throwable instanceof TimeoutException) {
+                errorMsg = context.getResources().getString(R.string.error_msg_timeout);
+            }
         }
 
         return errorMsg;

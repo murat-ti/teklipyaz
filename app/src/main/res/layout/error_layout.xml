@@ -14,33 +14,35 @@
         tools:visibility="visible">
 
         <!--Displays a generic error message-->
-        <TextView
+        <!--<TextView
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/title_no_data"/>
+            android:text="@string/title_no_data"/>-->
 
         <!--Displays a reason for the error-->
-              <TextView
-                  android:id="@+id/error_txt_cause"
-                  style="@style/TextAppearance.AppCompat.Caption"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center"
-                  android:layout_marginTop="@dimen/activity_margin_quarter"
-                  tools:text="The server took too long to respond."/>
+        <TextView
+          android:id="@+id/error_txt_cause"
+          style="@style/TextAppearance.AppCompat.Subhead"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:textColor="@color/color333"
+          android:layout_marginTop="@dimen/activity_margin_half"
+          tools:text="The server took too long to respond."/>
 
-              <!--CTA— prompting user to retry failed request>-->
-                  <Button
-                      android:id="@+id/error_btn_retry"
-                      style="@style/Widget.AppCompat.Button.Borderless"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center_horizontal"
-                      android:layout_marginTop="@dimen/activity_margin_content"
-                      android:text="@string/btn_retry"
-                      android:textColor="@color/colorPrimary"/>
-
+        <!--CTA— prompting user to retry failed request>-->
+          <Button
+              android:id="@+id/error_btn_retry"
+              style="@style/Widget.AppCompat.Button.Borderless"
+              android:textStyle="bold"
+              android:background="@color/colorPrimary"
+              android:textColor="@color/colorWhite"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginTop="@dimen/activity_margin_half"
+              android:text="@string/btn_retry" />
     </LinearLayout>
 </merge>

@@ -2,15 +2,16 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="statusbar_size">24dp</dimen>
-    <dimen name="preferenceSummaryTextSize">18sp</dimen>
+    <dimen name="preferenceTextSize">18sp</dimen>
 
     <dimen name="activity_margin">16dp</dimen>
     <dimen name="paddingSmall">2dp</dimen>
     <dimen name="activity_margin_content">24dp</dimen>
     <dimen name="activity_margin_half">12dp</dimen>
     <dimen name="activity_margin_quarter">4dp</dimen>
-    <dimen name="item_organization_height">192dp</dimen>
+    <dimen name="item_organization_height">237dp</dimen>
     <dimen name="ic_icons">20dp</dimen>
+    <dimen name="ic_icons_big">32dp</dimen>
     <dimen name="ic_icons_padding">7dp</dimen>
     <dimen name="line_height">1dp</dimen>
 </resources>

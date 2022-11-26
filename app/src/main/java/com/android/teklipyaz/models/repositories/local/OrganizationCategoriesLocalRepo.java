@@ -6,7 +6,8 @@ import io.reactivex.Observable;
 
 
 public interface OrganizationCategoriesLocalRepo {
-    Observable<List<OrganizationCategory>> getAllOrganizationCategories();
-    void addOrganizationCategories(List<OrganizationCategory> organizationCategories);
+    Observable<List<OrganizationCategory>> getAllLocal();
+    void add(List<OrganizationCategory> organizationCategories);
+    void removeAll();
 
 }

@@ -2,10 +2,4 @@
 <resources>
     <string name="icon_caret_right">&#xf0da;</string>
     <string name="icon_close">&#xf00d;</string>
-    <string name="icon_chevron_left">&#xf053;</string>
-    <string name="icon_th_large">&#xf009;</string>
-    <string name="icon_bars">&#xf0c9;</string>
-    <string name="icon_map_marker">&#xf3c5;</string>
-    <string name="icon_search">&#xf002;</string>
-    <string name="icon_cogs">&#xf085;</string>
 </resources>

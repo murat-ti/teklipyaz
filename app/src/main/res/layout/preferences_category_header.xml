@@ -9,10 +9,11 @@
             android:id="@android:id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="7sp"
+            android:textSize="@dimen/preferenceTextSize"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <View

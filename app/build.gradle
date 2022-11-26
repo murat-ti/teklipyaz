@@ -33,6 +33,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 
@@ -50,6 +54,7 @@ dependencies {
     implementation "com.android.support:support-v4:${rootProject.libraryVersion}"
     implementation "com.android.support:support-vector-drawable:${rootProject.libraryVersion}"
     implementation "com.android.support:preference-v7:${rootProject.libraryVersion}"
+    implementation "com.android.support:support-core-ui:${rootProject.libraryVersion}"
     implementation 'org.jsoup:jsoup:1.10.1'
     //implementation 'com.google.android.gms:play-services:16.1.0'
     testImplementation 'junit:junit:4.12'
@@ -61,7 +66,7 @@ dependencies {
     //implementation 'com.android.volley:volley:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
     implementation "android.arch.persistence.room:runtime:${rootProject.roomVersion}"
     annotationProcessor "android.arch.persistence.room:compiler:${rootProject.roomVersion}"
@@ -79,4 +84,6 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:${rootProject.roomVersion}"
     implementation "android.arch.persistence.room:runtime:${rootProject.roomVersion}"
     annotationProcessor "android.arch.persistence.room:compiler:${rootProject.roomVersion}"
+
+    implementation 'com.getbase:floatingactionbutton:1.9.0'
 }

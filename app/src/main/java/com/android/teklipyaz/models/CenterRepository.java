@@ -8,28 +8,23 @@
 
 package com.android.teklipyaz.models;
 
-import com.android.teklipyaz.models.entities.CityModel;
-import com.android.teklipyaz.models.entities.OrganizationModel;
+import com.android.teklipyaz.models.entities.City;
+import com.android.teklipyaz.models.entities.Organization;
 import com.android.teklipyaz.models.entities.OrganizationCategory;
+import com.android.teklipyaz.models.entities.OrganizationFav;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class CenterRepository {
 
     private static CenterRepository centerRepository;
 
-    private ArrayList<OrganizationCategory> listOfCategory = new ArrayList<OrganizationCategory>();
-    private List<CityModel> listOfCity = new ArrayList<CityModel>();
-    private List<OrganizationModel> listOfOrganizationModel = new ArrayList<OrganizationModel>();
-    private ConcurrentHashMap<String, ArrayList<OrganizationModel>> mapOfOrganizationsInCategory = new ConcurrentHashMap<String, ArrayList<OrganizationModel>>();
-    private List<OrganizationModel> listOfOrganizationsInShoppingList = Collections.synchronizedList(new ArrayList<OrganizationModel>());
-    private List<Set<String>> listOfItemSetsForDataMining = new ArrayList<>();
+    private List<Organization> organizationList = new ArrayList<Organization>();
+    private List<OrganizationCategory> organizationCategoryList = new ArrayList<OrganizationCategory>();
+    private List<City> cityList = new ArrayList<City>();
+    private Organization organization = new Organization();
+    //private OrganizationFav organizationFav = new OrganizationFav();
 
     public static CenterRepository getCenterRepository() {
 
@@ -39,58 +34,43 @@ public class CenterRepository {
         return centerRepository;
     }
 
-
-    public List<OrganizationModel> getListOfOrganizationsInShoppingList() {
-        return listOfOrganizationsInShoppingList;
+    public List<Organization> getOrganizationList() {
+        return organizationList;
     }
 
-    public void setListOfOrganizationsInShoppingList(ArrayList<OrganizationModel> getShoppingList) {
-        this.listOfOrganizationsInShoppingList = getShoppingList;
+    public void setOrganizationList(List<Organization> organizationList) {
+        this.organizationList = organizationList;
     }
 
-    public Map<String, ArrayList<OrganizationModel>> getMapOfOrganizationsInCategory() {
-
-        return mapOfOrganizationsInCategory;
+    public List<OrganizationCategory> getOrganizationCategoryList() {
+        return organizationCategoryList;
     }
 
-    public void setMapOfOrganizationsInCategory(ConcurrentHashMap<String, ArrayList<OrganizationModel>> mapOfOrganizationsInCategory) {
-        this.mapOfOrganizationsInCategory = mapOfOrganizationsInCategory;
+    public void setOrganizationCategoryList(List<OrganizationCategory> organizationCategoryList) {
+        this.organizationCategoryList = organizationCategoryList;
     }
 
-    public ArrayList<OrganizationCategory> getListOfCategory() {
-
-        return listOfCategory;
+    public Organization getOrganization() {
+        return organization;
     }
 
-    public void setListOfCategory(ArrayList<OrganizationCategory> listOfCategory) {
-        this.listOfCategory = listOfCategory;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
-    public List<CityModel> getListOfCity() {
-
-        return listOfCity;
+    /*public OrganizationFav getOrganizationFav() {
+        return organizationFav;
     }
 
-    public void setListOfCity(List<CityModel> listOfCity) {
-        this.listOfCity = listOfCity;
+    public void setOrganizationFav(OrganizationFav organizationFav) {
+        this.organizationFav = organizationFav;
+    }*/
+
+    public List<City> getCityList() {
+        return cityList;
     }
 
-    public List<OrganizationModel> getListOfOrganization() {
-
-        return listOfOrganizationModel;
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
     }
-
-    public void setListOfOrganizationModel(List<OrganizationModel> listOfOrganizationModel) {
-        this.listOfOrganizationModel = listOfOrganizationModel;
-    }
-
-    public List<Set<String>> getItemSetList() {
-
-        return listOfItemSetsForDataMining;
-    }
-
-    public void addToItemSetList(HashSet list) {
-        listOfItemSetsForDataMining.add(list);
-    }
-
 }
